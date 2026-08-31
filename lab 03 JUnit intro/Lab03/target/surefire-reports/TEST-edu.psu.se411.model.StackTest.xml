@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.psu.se411.model.StackTest" time="0.167" tests="0" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\zalbe\OneDrive\Desktop\se411_mylabs\lab 03 JUnit intro\Lab03\target\test-classes;C:\Users\zalbe\OneDrive\Desktop\se411_mylabs\lab 03 JUnit intro\Lab03\target\classes;C:\Users\zalbe\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\zalbe\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\zalbe\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\zalbe\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\zalbe\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Riyadh"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre1.8.0_461\bin"/>
+    <property name="sun.java.command" value="C:\Users\zalbe\AppData\Local\Temp\surefire935009943065294589\surefirebooter-20260831144539567_3.jar C:\Users\zalbe\AppData\Local\Temp\surefire935009943065294589 2026-08-31T14-45-38_288-jvmRun1 surefire-20260831144539567_1tmp surefire_0-20260831144539567_2tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\zalbe\OneDrive\Desktop\se411_mylabs\lab 03 JUnit intro\Lab03\target\test-classes;C:\Users\zalbe\OneDrive\Desktop\se411_mylabs\lab 03 JUnit intro\Lab03\target\classes;C:\Users\zalbe\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\zalbe\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\zalbe\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\zalbe\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\zalbe\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\zalbe"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="C:\Program Files\Java\jre1.8.0_461"/>
+    <property name="basedir" value="C:\Users\zalbe\OneDrive\Desktop\se411_mylabs\lab 03 JUnit intro\Lab03"/>
+    <property name="style.color" value="always"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\zalbe\AppData\Local\Temp\surefire935009943065294589\surefirebooter-20260831144539567_3.jar"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre1.8.0_461\lib\resources.jar;C:\Program Files\Java\jre1.8.0_461\lib\rt.jar;C:\Program Files\Java\jre1.8.0_461\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_461\lib\jce.jar;C:\Program Files\Java\jre1.8.0_461\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_461\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_461\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_461-b11"/>
+    <property name="user.name" value="zalbe"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre1.8.0_461\lib\endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\zalbe\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\zalbe\AppData\Local\Temp\"/>
+    <property name="java.version" value="1.8.0_461"/>
+    <property name="user.dir" value="C:\Users\zalbe\OneDrive\Desktop\se411_mylabs\lab 03 JUnit intro\Lab03"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jre1.8.0_461\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/zalbe/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_25.0.4.v20260826-0822/jre/bin/server;C:/Users/zalbe/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_25.0.4.v20260826-0822/jre/bin;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\zalbe\AppData\Local\Programs\Python\Launcher\;C:\Users\zalbe\AppData\Local\Microsoft\WindowsApps;C:\Users\zalbe\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Nmap;C:\WINDOWS\System32;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.461-b11"/>
+    <property name="java.specification.maintenance.version" value="6"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre1.8.0_461\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="constructorCapacityValidation_ZeroOrNegativeCapacity_DefaultBranchTaken" classname="Branching Logic Tests" time="0.032"/>
+  <testcase name="constructorCapacityValidation_PositiveCapacity_BranchTaken" classname="Branching Logic Tests" time="0.0"/>
+  <testcase name="popEmptyCheck_NonEmptyStackBranch_ElementReturned" classname="Branching Logic Tests" time="0.0"/>
+  <testcase name="popEmptyCheck_EmptyStackBranch_ExceptionThrown" classname="Branching Logic Tests" time="0.0"/>
+  <testcase name="constructorWithCapacityOne_CreatesStack" classname="Constructor Tests" time="0.001"/>
+  <testcase name="constructorWithNegativeCapacity_DefaultsToTen" classname="Constructor Tests" time="0.0"/>
+  <testcase name="defaultConstructor_CreatesStack" classname="Constructor Tests" time="0.0"/>
+  <testcase name="constructorWithZeroCapacity_DefaultsToTen" classname="Constructor Tests" time="0.0"/>
+  <testcase name="constructorWithPositiveCapacity_CreatesStack" classname="Constructor Tests" time="0.0"/>
+  <testcase name="pop_NullValue_ReturnsNull" classname="Pop Method Tests" time="0.0"/>
+  <testcase name="pop_WithMixedNullAndNonNull_MaintainsLIFOOrder" classname="Pop Method Tests" time="0.005"/>
+  <testcase name="pop_SingleElement_ReturnsElement" classname="Pop Method Tests" time="0.002"/>
+  <testcase name="pop_AllElements_UntilEmpty" classname="Pop Method Tests" time="0.004"/>
+  <testcase name="pop_WithSmallInitialCapacity_WorksCorrectly" classname="Pop Method Tests" time="0.002"/>
+  <testcase name="pop_EmptyStack_HasCorrectExceptionMessage" classname="Pop Method Tests" time="0.003"/>
+  <testcase name="pop_EmptyStack_ThrowsNoSuchElementException" classname="Pop Method Tests" time="0.003"/>
+  <testcase name="pop_AfterExhaustingAndRefilling_MaintainsLIFO" classname="Pop Method Tests" time="0.0"/>
+  <testcase name="pop_MultipleElements_ReturnsInLIFOOrder" classname="Pop Method Tests" time="0.0"/>
+  <testcase name="pop_EmptyStack_ExceptionTypeIsExact" classname="Pop Method Tests" time="0.002"/>
+  <testcase name="push_MultipleNullValues_AreAllowed" classname="Push Method Tests" time="0.0"/>
+  <testcase name="push_BeyondInitialCapacity_StackExpands" classname="Push Method Tests" time="0.0"/>
+  <testcase name="push_NullValue_IsAllowed" classname="Push Method Tests" time="0.0"/>
+  <testcase name="push_MultipleElements_InSequence" classname="Push Method Tests" time="0.004"/>
+  <testcase name="push_SingleElement_OnEmptyStack" classname="Push Method Tests" time="0.0"/>
+  <testcase name="push_AfterPop_UpdatesStateCorrectly" classname="Push Method Tests" time="0.0"/>
+  <testcase name="push_VariousIntegerValues" classname="Push Method Tests" time="0.0"/>
+  <testcase name="multipleStacks_AreIndependent" classname="State and Multi-Call Tests" time="0.013"/>
+  <testcase name="interleavedPushPop_MaintainsCorrectState" classname="State and Multi-Call Tests" time="0.002"/>
+  <testcase name="pushPopPattern_StateRemainConsistent" classname="State and Multi-Call Tests" time="0.0"/>
+  <testcase name="stackWithDifferentTypes_WorksIndependently" classname="State and Multi-Call Tests" time="0.0"/>
+  <testcase name="complexOperationSequence_StateCorrect" classname="State and Multi-Call Tests" time="0.0"/>
+</testsuite>
