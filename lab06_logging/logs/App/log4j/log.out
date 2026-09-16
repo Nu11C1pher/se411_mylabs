@@ -1,0 +1,45 @@
+2026-09-16 13:37:04,961 INFO [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Application is starting...
+2026-09-16 13:44:51,123 INFO [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Application is starting...
+2026-09-16 13:44:51,125 DEBUG [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.model.WalletAccount - Wallet account created. Initial balance=1000.0
+2026-09-16 13:44:51,125 DEBUG [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.model.WalletAccount - Withdrawal requested. Amount=1500.0
+2026-09-16 13:44:51,126 WARN [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.exceptions.InsufficientFundsException - InsufficientFundsException object created: Insufficient funds. Your balance is 1000.0
+2026-09-16 13:44:51,130 ERROR [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Insufficient funds exception thrown.
+edu.spu.se411.lab06_logging.exceptions.InsufficientFundsException: Insufficient funds. Your balance is 1000.0
+	at edu.spu.se411.lab06_logging.model.WalletAccount.withdraw(WalletAccount.java:34)
+	at edu.spu.se411.lab06_logging.App.main(App.java:21)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doMain(ExecJavaMojo.java:375)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doExec(ExecJavaMojo.java:364)
+	at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0(ExecJavaMojo.java:286)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2026-09-16 13:44:51,134 DEBUG [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.model.WalletAccount - Deposit requested. Amount=-100.0
+2026-09-16 13:44:51,134 ERROR [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Invalid deposit exception thrown.
+java.lang.IllegalArgumentException: Cannot deposit negative number: -100.0
+	at edu.spu.se411.lab06_logging.model.WalletAccount.deposit(WalletAccount.java:56)
+	at edu.spu.se411.lab06_logging.App.main(App.java:27)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doMain(ExecJavaMojo.java:375)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doExec(ExecJavaMojo.java:364)
+	at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0(ExecJavaMojo.java:286)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2026-09-16 13:44:51,134 INFO [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Application is ending...
+2026-09-16 13:48:27,757 INFO [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Application is starting...
+2026-09-16 13:48:27,760 DEBUG [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.model.WalletAccount - Wallet account created. Initial balance=1000.0
+2026-09-16 13:48:27,760 DEBUG [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.model.WalletAccount - Withdrawal requested. Amount=1500.0
+2026-09-16 13:48:27,761 WARN [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.exceptions.InsufficientFundsException - InsufficientFundsException object created: Insufficient funds. Your balance is 1000.0
+2026-09-16 13:48:27,762 ERROR [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Insufficient funds exception thrown.
+edu.spu.se411.lab06_logging.exceptions.InsufficientFundsException: Insufficient funds. Your balance is 1000.0
+	at edu.spu.se411.lab06_logging.model.WalletAccount.withdraw(WalletAccount.java:34)
+	at edu.spu.se411.lab06_logging.App.main(App.java:21)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doMain(ExecJavaMojo.java:375)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doExec(ExecJavaMojo.java:364)
+	at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0(ExecJavaMojo.java:286)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2026-09-16 13:48:27,764 DEBUG [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.model.WalletAccount - Deposit requested. Amount=-100.0
+2026-09-16 13:48:27,764 ERROR [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Invalid deposit exception thrown.
+java.lang.IllegalArgumentException: Cannot deposit negative number: -100.0
+	at edu.spu.se411.lab06_logging.model.WalletAccount.deposit(WalletAccount.java:56)
+	at edu.spu.se411.lab06_logging.App.main(App.java:27)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doMain(ExecJavaMojo.java:375)
+	at org.codehaus.mojo.exec.ExecJavaMojo.doExec(ExecJavaMojo.java:364)
+	at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0(ExecJavaMojo.java:286)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2026-09-16 13:48:27,765 INFO [edu.spu.se411.lab06_logging.App.main()] edu.spu.se411.lab06_logging.App - Application is ending...
