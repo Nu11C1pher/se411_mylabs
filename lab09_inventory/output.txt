@@ -1,0 +1,29 @@
+System started.
+
+All inventory items:
+Book{id=1, name='Concurrency in Java', author='Brian Goetz'}
+Book{id=2, name='Effective Java', author='Joshua Bloch'}
+ElectronicDevice{id=3, name='MacBook Pro', category='Laptop'}
+ElectronicDevice{id=4, name='iPhone', category='Smartphone'}
+
+Search by name: Concurrency in Java
+Book{id=1, name='Concurrency in Java', author='Brian Goetz'}
+
+Search by ID: 3
+ElectronicDevice{id=3, name='MacBook Pro', category='Laptop'}
+
+Search by author: Joshua Bloch
+Book{id=2, name='Effective Java', author='Joshua Bloch'}
+
+Search by category: Smartphone
+ElectronicDevice{id=4, name='iPhone', category='Smartphone'}
+
+Search for an electronic device by name: MacBook Pro
+ElectronicDevice{id=3, name='MacBook Pro', category='Laptop'}
+
+Inventory after removing iPhone:
+Book{id=1, name='Concurrency in Java', author='Brian Goetz'}
+Book{id=2, name='Effective Java', author='Joshua Bloch'}
+ElectronicDevice{id=3, name='MacBook Pro', category='Laptop'}
+
+System stopped.
