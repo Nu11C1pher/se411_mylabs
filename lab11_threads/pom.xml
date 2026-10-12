@@ -3,7 +3,7 @@
   <groupId>edu.psu.se411</groupId>
   <artifactId>lab11_threads</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  	<properties>
+    <properties>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
@@ -19,8 +19,8 @@
 			<version>2.0.16</version>
 		</dependency>
 	</dependencies>
-  
-  	<build>
+
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
