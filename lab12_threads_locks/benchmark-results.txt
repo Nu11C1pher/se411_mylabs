@@ -1,0 +1,12 @@
+fixed accounts=1000 transactions=1000000 time_ms=901.988 threads=12 initial=10000000.00 final=10000000.00 completed=1000000 errors=0
+cached accounts=1000 transactions=1000000 time_ms=2677.484 threads=19 initial=10000000.00 final=10000000.00 completed=1000000 errors=0
+fixed accounts=10 transactions=1000000 time_ms=908.483 threads=12 initial=100000.00 final=100000.00 completed=1000000 errors=0
+cached accounts=10 transactions=1000000 time_ms=2920.855 threads=72 initial=100000.00 final=100000.00 completed=1000000 errors=0
+fixed accounts=1000 transactions=1000000 time_ms=821.253 threads=12 initial=10000000.00 final=10000000.00 completed=1000000 errors=0
+cached accounts=1000 transactions=1000000 time_ms=2744.584 threads=23 initial=10000000.00 final=10000000.00 completed=1000000 errors=0
+fixed accounts=10 transactions=1000000 time_ms=929.098 threads=12 initial=100000.00 final=100000.00 completed=1000000 errors=0
+cached accounts=10 transactions=1000000 time_ms=2836.303 threads=80 initial=100000.00 final=100000.00 completed=1000000 errors=0
+fixed accounts=1000 transactions=1000000 time_ms=778.385 threads=12 initial=10000000.00 final=10000000.00 completed=1000000 errors=0
+cached accounts=1000 transactions=1000000 time_ms=2761.005 threads=30 initial=10000000.00 final=10000000.00 completed=1000000 errors=0
+fixed accounts=10 transactions=1000000 time_ms=838.209 threads=12 initial=100000.00 final=100000.00 completed=1000000 errors=0
+cached accounts=10 transactions=1000000 time_ms=3280.555 threads=72 initial=100000.00 final=100000.00 completed=1000000 errors=0

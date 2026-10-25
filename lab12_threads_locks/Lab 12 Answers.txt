@@ -1,0 +1,79 @@
+Lab 12 - Threads and locks
+
+1. Fixed and cached thread pools
+
+I used App for the fixed pool and CachedApp for the cached pool.
+Each program runs one million transactions. I ran each case three times.
+
+Accounts    Fixed average (ms)    Cached average (ms)
+1000        833.875               2727.691
+10          891.930               3012.571
+
+Observation:
+The fixed pool was faster in both cases on this computer. With 10 accounts,
+more transactions need the same account locks, so there is more contention.
+The cached pool created 72 to 80 threads with 10 accounts, compared with
+19 to 30 threads with 1000 accounts. Extra threads add scheduling overhead
+and cannot make progress while the accounts they need are locked.
+The fixed pool used 12 threads in these runs.
+
+These are local end-to-end measurements, including task generation and pool
+shutdown. Both programs use the same random seed, transaction amounts, and
+a maximum of 256 outstanding tasks to avoid exhausting native threads.
+A cached pool is still created with Executors.newCachedThreadPool().
+The submission limit affects its performance, so these results describe
+this configuration. Timing and execution order can change between runs.
+Both programs use the final ordered-lock solution.
+
+2. Replacing synchronized with locks
+
+What could go wrong?
+Deadlock can happen if each transfer locks its sender first. For example,
+one thread locks account A and waits for B, while another locks B and
+waits for A. Neither thread can continue. A missing unlock can also leave
+other threads waiting forever.
+
+Solution:
+I compare the account IDs and lock the smaller ID first, then the larger
+ID. Every transaction follows the same order, including transfers going
+in opposite directions. This removes circular waiting. IDs are immutable,
+and a transfer between accounts with the same ID is rejected.
+
+Both locks stay held while withdrawing and depositing, so another transfer
+cannot interfere halfway through. Each lock is released in a finally block,
+including when there is not enough money. ReentrantLock allows the account
+methods to acquire a lock already held by the transaction's thread.
+
+3. Verification
+
+Compiled with JDK 22 using --release 17.
+All 12 full benchmark runs completed with:
+- 1,000,000 completed transaction tasks per run
+- zero unexpected errors
+- no negative balances
+- unchanged total money (within 0.001 floating-point tolerance)
+
+Transactions without enough funds are skipped by the starter's run method;
+completed counts include these attempts.
+
+LockChecks also passed:
+- 100,000 A-to-B and 100,000 B-to-A concurrent transfers
+- correct balances after those transfers
+- insufficient funds rejected
+- another thread can transfer after that exception, proving locks released
+
+Raw timings are in benchmark-results.txt.
+
+4. Running
+
+Install JDK 17 or newer, then double-click run-lab.cmd.
+It compiles the code, runs LockChecks, and runs all four required cases.
+No external Java libraries are needed.
+
+With Maven installed, the project can also be run using:
+mvn clean package exec:java -Dexec.args="1000 1000000"
+mvn exec:java -Dexec.mainClass=edu.psu.se411.lab12_threads.CachedApp -Dexec.args="1000 1000000"
+Change 1000 to 10 for the other account count.
+
+Maven was not installed on the test computer, so verification used javac
+and java directly through the same commands provided in run-lab.cmd.
