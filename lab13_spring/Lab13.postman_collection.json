@@ -1,0 +1,128 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "Lab 13 Products API"
+  },
+  "item": [
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(200); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/products"
+      },
+      "name": "All products - 200"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(200); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/products/10"
+      },
+      "name": "Product 10 - 200"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/products/-1"
+      },
+      "name": "Negative ID - 400"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/products/0"
+      },
+      "name": "Zero ID - 400"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/products/abc"
+      },
+      "name": "Non-numeric ID - 400"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(404); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/products/9999"
+      },
+      "name": "Missing product - 404"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
