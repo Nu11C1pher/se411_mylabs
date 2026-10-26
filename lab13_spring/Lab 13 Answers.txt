@@ -1,0 +1,67 @@
+Lab 13 - Spring Introduction
+
+The project uses Spring Boot 4.1.2, Maven, Java 17, Spring Web,
+Spring Data JDBC, H2, and spring-boot-starter-validation.
+
+Model:
+Product is a record. I used BigDecimal for price and DECIMAL(10,2) in
+schema.sql to avoid binary floating-point rounding errors. The database
+loads the 17 products from the lab when the application starts.
+
+Repository:
+ProductRepository extends CrudRepository and PagingAndSortingRepository.
+This gives it CRUD, pagination, and sorting support.
+
+Service and controller:
+ProductService uses constructor injection to access the repository.
+ProductController uses constructor injection to access the service.
+
+GET /api/v1/products returns all products as JSON.
+GET /api/v1/products/10 returns the product with ID 10.
+An ID that does not exist returns 404 Not Found.
+
+Input validation:
+I used spring-boot-starter-validation, as requested.
+The endpoint ID must be positive. Product IDs also use @Positive.
+Product names cannot be blank and must be at most 100 characters.
+Descriptions can be at most 100 characters.
+Prices cannot be null or negative and must fit DECIMAL(10,2):
+at most eight integer digits and two decimal places.
+A null record ID is allowed for a new product because the database
+generates the ID. The lab's HTTP endpoints only read products.
+
+Question: Which status code do you get when sending a negative ID?
+Answer: 400 Bad Request.
+Test request: GET http://localhost:8080/api/v1/products/-1
+
+How to run:
+Double-click run-lab.cmd. Keep its window open while using the API.
+Open http://localhost:8080/api/v1/products in a browser.
+Press Ctrl+C in the server window to stop it.
+
+How to test:
+Double-click test-lab.cmd to run the automated tests.
+Import Lab13.postman_collection.json into Postman and run its requests.
+The collection uses http://localhost:8080 as its base URL.
+
+Eclipse:
+File > Import > Maven > Existing Maven Projects.
+Select this lab13_spring folder, then click Finish.
+Right-click pom.xml > Run As > Maven build.
+Use the goal: clean spring-boot:run.
+If Eclipse shows dependency errors, use Maven > Update Project.
+
+The H2 database is in memory. Changes disappear when the server stops,
+and the original data loads again on the next start.
+
+Verification results:
+Maven clean package: BUILD SUCCESS.
+Automated tests: 5, failures: 0, errors: 0, skipped: 0.
+Live HTTP checks on port 8080 passed:
+GET /api/v1/products       -> 200, 17 products as JSON
+GET /api/v1/products/10    -> 200
+GET /api/v1/products/-1    -> 400
+GET /api/v1/products/0     -> 400
+GET /api/v1/products/abc   -> 400
+GET /api/v1/products/9999  -> 404
+Full HTTP responses are saved in api-test-results.json.

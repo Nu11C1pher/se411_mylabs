@@ -1,0 +1,32 @@
+[
+  {
+    "request": "GET /api/v1/products",
+    "status": 200,
+    "body": "[{\"id\":10,\"name\":\"3d printer\",\"description\":\"A beginner friendly 3d printer\",\"price\":1840.25},{\"id\":11,\"name\":\"3d printer2\",\"description\":\"A beginner friendly 3d printer\",\"price\":1790.25},{\"id\":12,\"name\":\"3d printer3\",\"description\":\"A beginner friendly 3d printer\",\"price\":1450.25},{\"id\":13,\"name\":\"3d printer4\",\"description\":\"A beginner friendly 3d printer\",\"price\":1210.25},{\"id\":14,\"name\":\"3d printer5\",\"description\":\"A beginner friendly 3d printer\",\"price\":1140.25},{\"id\":15,\"name\":\"3d printer6\",\"description\":\"A beginner friendly 3d printer\",\"price\":2840.25},{\"id\":16,\"name\":\"3d printer7\",\"description\":\"A beginner friendly 3d printer\",\"price\":3240.25},{\"id\":17,\"name\":\"3d printer8\",\"description\":\"A beginner friendly 3d printer\",\"price\":2840.25},{\"id\":18,\"name\":\"3d printer9\",\"description\":\"A beginner friendly 3d printer\",\"price\":3640.25},{\"id\":19,\"name\":\"PC 01\",\"description\":\"A portable computer\",\"price\":1840.25},{\"id\":20,\"name\":\"PC 02\",\"description\":\"A portable computer\",\"price\":1740.25},{\"id\":21,\"name\":\"PC 03\",\"description\":\"A portable computer\",\"price\":1560.25},{\"id\":22,\"name\":\"PC 04\",\"description\":\"A portable computer\",\"price\":1780.25},{\"id\":23,\"name\":\"PC 05\",\"description\":\"A portable computer\",\"price\":1210.25},{\"id\":24,\"name\":\"PC 06\",\"description\":\"A portable computer\",\"price\":1980.25},{\"id\":25,\"name\":\"PC 07\",\"description\":\"A portable computer\",\"price\":2340.25},{\"id\":26,\"name\":\"PC 08\",\"description\":\"A portable computer\",\"price\":2440.25}]"
+  },
+  {
+    "request": "GET /api/v1/products/10",
+    "status": 200,
+    "body": "{\"id\":10,\"name\":\"3d printer\",\"description\":\"A beginner friendly 3d printer\",\"price\":1840.25}"
+  },
+  {
+    "request": "GET /api/v1/products/-1",
+    "status": 400,
+    "body": "{\"timestamp\":\"2026-10-26T10:06:56.441Z\",\"status\":400,\"error\":\"Bad Request\",\"path\":\"/api/v1/products/-1\"}"
+  },
+  {
+    "request": "GET /api/v1/products/0",
+    "status": 400,
+    "body": "{\"timestamp\":\"2026-10-26T10:06:56.461Z\",\"status\":400,\"error\":\"Bad Request\",\"path\":\"/api/v1/products/0\"}"
+  },
+  {
+    "request": "GET /api/v1/products/abc",
+    "status": 400,
+    "body": "{\"timestamp\":\"2026-10-26T10:06:56.493Z\",\"status\":400,\"error\":\"Bad Request\",\"path\":\"/api/v1/products/abc\"}"
+  },
+  {
+    "request": "GET /api/v1/products/9999",
+    "status": 404,
+    "body": "{\"timestamp\":\"2026-10-26T10:06:56.524Z\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/api/v1/products/9999\"}"
+  }
+]

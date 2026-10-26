@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: edu.psu.se411.lab13.Lab13SpringApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.27 s -- in edu.psu.se411.lab13.Lab13SpringApplicationTests
