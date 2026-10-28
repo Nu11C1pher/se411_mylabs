@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/courses/9001"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"id":9002,"code":"SE411","name":"Valid name","credits":3}'
+scripts:
+  - type: afterResponse
+    code: pm.test("Expected status", function () { pm.response.to.have.status(400); });
+    language: text/javascript
+order: 13000

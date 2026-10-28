@@ -1,0 +1,120 @@
+Lab 14 - Spring CRUD
+
+I used Maven, Java 17, Spring Boot 4.1.2, Spring Web,
+Spring Data JDBC, H2 and spring-boot-starter-validation.
+
+The lab sheet mentions Spring Boot 4.0.5. This project uses 4.1.2
+as requested. Database access uses JDBC, not JPA or Hibernate.
+
+API design
+
+Operation        Method    Route                    Success
+Create           POST      /api/v1/courses           201 + Location header
+Find all         GET       /api/v1/courses           200 + JSON array
+Find by ID       GET       /api/v1/courses/{id}      200 + JSON object
+Update           PUT       /api/v1/courses/{id}      204, no body
+Delete           DELETE    /api/v1/courses/{id}      204, no body
+
+A missing course returns 404 for GET, PUT and DELETE.
+An invalid request returns 400.
+A duplicate ID in POST returns 422 without changing the existing course.
+
+Example POST body
+
+{
+  "id": 100,
+  "code": "SE411",
+  "name": "Spring CRUD",
+  "description": "Course API lab",
+  "credits": 3
+}
+
+A successful POST returns 201 Created and a Location header ending in
+/api/v1/courses/100. GET that URL to read the created course.
+For PUT, send a complete course object with the same ID as the route.
+Then DELETE the same URL to remove it.
+
+Model and validation
+
+Course is a Java record with @Id from Spring Data.
+The client supplies the ID; it is required and cannot be negative.
+Zero is accepted because the requirement says nonnegative.
+Code must not be null, empty or whitespace.
+Name must not be blank and must contain at least two characters.
+Credits is required and must be from 1 to 10, inclusive.
+Description is optional.
+
+Validation is also applied to PUT, so updates cannot bypass the rules.
+A body ID that differs from the route ID returns 400.
+Malformed JSON and missing bodies return 400.
+
+Database and layers
+
+schema.sql creates the course table and database constraints.
+data.sql loads three example courses when the server starts.
+CourseRepository extends CrudRepository and uses parameterized JDBC
+queries for INSERT, UPDATE and DELETE.
+CourseService contains the business rules and uses transactions.
+CourseController maps the HTTP requests and response codes.
+Constructor injection links the layers.
+
+I used an explicit INSERT for creation because a supplied record ID
+can make Spring Data's save() try an UPDATE. The database primary key
+rejects duplicate IDs, including two POST requests sent at the same time.
+UPDATE and DELETE check the number of changed rows to return 404 when
+the course does not exist.
+
+Running
+
+Double-click run-lab.cmd, then open:
+http://localhost:8080/api/v1/courses
+
+Keep the server window open while testing. Press Ctrl+C to stop it.
+H2 is in memory. It resets to the seed data after a restart.
+
+Testing
+
+Double-click test-lab.cmd to run Maven clean verify.
+Import Lab14.postman_collection.json into Postman to test the API.
+Run its requests in order. The POST, PUT and DELETE requests change
+the in-memory course with ID 9001.
+
+Eclipse
+
+File > Import > Maven > Existing Maven Projects.
+Choose this lab14_spring_crud folder and click Finish.
+Right-click pom.xml > Run As > Maven build.
+Use the goal: clean spring-boot:run.
+Use Maven > Update Project if dependency imports need refreshing.
+
+Verification results
+
+Maven clean verify: BUILD SUCCESS.
+12 integration tests: 0 failures, 0 errors, 0 skipped.
+
+Verified:
+- GET list and seeded course return JSON with 200.
+- POST returns 201 and a Location header for the new course.
+- PUT persists the updated values and returns an empty 204 response.
+- DELETE removes the row and returns an empty 204 response.
+- Missing resources return 404 for GET, PUT and DELETE.
+- Duplicate and concurrent duplicate POST requests return 422 without overwriting.
+- Negative/null IDs, blank/null codes, short/blank/null names,
+  out-of-range/null credits, and overlong fields return 400.
+- Zero ID and credit limits 1 and 10 are accepted.
+- PUT validation cannot change a valid row using invalid data.
+- Malformed/missing JSON and invalid route IDs return 400.
+- A null description is accepted.
+
+The tests used real HTTP requests against an embedded Spring Boot server
+and the H2 JDBC database. Full results are in test-results.txt.
+The Postman collection contains 17 ordered requests for manual testing.
+
+Postman and PUTMAN verification (28 October 2026)
+- Postman desktop Collection Runner: 17 requests, 21 assertions passed,
+  0 failures, 0 errors.
+- The same collection also passed with Newman: 17 requests, 21 assertions.
+- PUTMAN REST Client installed in Eclipse. GET /api/v1/courses returned 200
+  and displayed the course list as formatted JSON.
+- Postman v3 YAML collection: ../postman/collections/Lab 14 Course CRUD API.
+  Original v2.1 JSON collection is included for other Postman versions/Newman.

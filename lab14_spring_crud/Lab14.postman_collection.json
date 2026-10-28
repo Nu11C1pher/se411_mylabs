@@ -1,0 +1,481 @@
+{
+  "item": [
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "GET"
+      },
+      "name": "Find all courses"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/courses/1",
+        "method": "GET"
+      },
+      "name": "Find seed course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(201); });",
+              "pm.test(\"Location points to created course\", function () { pm.expect(pm.response.headers.get(\"Location\")).to.match(/\\/api\\/v1\\/courses\\/9001$/); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9001,\"code\":\"SE411\",\"name\":\"Spring CRUD\",\"description\":\"Lab 14 course\",\"credits\":3}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "POST"
+      },
+      "name": "Create course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "GET"
+      },
+      "name": "Find created course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(422); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9001,\"code\":\"SE411\",\"name\":\"Duplicate\",\"description\":\"Must not replace the course\",\"credits\":3}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "POST"
+      },
+      "name": "Duplicate ID"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(204); });",
+              "pm.test(\"No response body\", function () { pm.expect(pm.response.text()).to.eql(\"\"); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9001,\"code\":\"SE411\",\"name\":\"Updated Spring CRUD\",\"description\":\"Updated course\",\"credits\":4}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "PUT"
+      },
+      "name": "Update course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(200); });",
+              "pm.test(\"Update persisted\", function () { pm.expect(pm.response.json().name).to.eql(\"Updated Spring CRUD\"); pm.expect(pm.response.json().credits).to.eql(4); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "GET"
+      },
+      "name": "Find updated course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":-1,\"code\":\"SE411\",\"name\":\"Valid name\",\"credits\":3}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "POST"
+      },
+      "name": "Negative ID"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9002,\"code\":\"\",\"name\":\"Valid name\",\"credits\":3}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "POST"
+      },
+      "name": "Empty code"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9002,\"code\":\"SE411\",\"name\":\"A\",\"credits\":3}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "POST"
+      },
+      "name": "Short name"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9002,\"code\":\"SE411\",\"name\":\"Valid name\",\"credits\":0}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "POST"
+      },
+      "name": "Credits below minimum"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9002,\"code\":\"SE411\",\"name\":\"Valid name\",\"credits\":11}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses",
+        "method": "POST"
+      },
+      "name": "Credits above maximum"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9002,\"code\":\"SE411\",\"name\":\"Valid name\",\"credits\":3}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "PUT"
+      },
+      "name": "Mismatched update ID"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(204); });",
+              "pm.test(\"No response body\", function () { pm.expect(pm.response.text()).to.eql(\"\"); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "DELETE"
+      },
+      "name": "Delete course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "GET"
+      },
+      "name": "Get deleted course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [
+          {
+            "value": "application/json",
+            "key": "Content-Type"
+          }
+        ],
+        "body": {
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\"id\":9001,\"code\":\"SE411\",\"name\":\"Missing course\",\"credits\":3}",
+          "mode": "raw"
+        },
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "PUT"
+      },
+      "name": "Update missing course"
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Expected status\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/courses/9001",
+        "method": "DELETE"
+      },
+      "name": "Delete missing course"
+    }
+  ],
+  "variable": [
+    {
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "Lab 14 Course CRUD API"
+  }
+}

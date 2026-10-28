@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/courses"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"id":9001,"code":"SE411","name":"Spring CRUD","description":"Lab 14 course","credits":3}'
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Expected status", function () { pm.response.to.have.status(201); });
+      pm.test("Location points to created course", function () { pm.expect(pm.response.headers.get("Location")).to.match(/\/api\/v1\/courses\/9001$/); });
+    language: text/javascript
+order: 3000
