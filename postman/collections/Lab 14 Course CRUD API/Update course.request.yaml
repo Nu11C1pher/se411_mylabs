@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/courses/9001"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"id":9001,"code":"SE411","name":"Updated Spring CRUD","description":"Updated course","credits":4}'
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Expected status", function () { pm.response.to.have.status(204); });
+      pm.test("No response body", function () { pm.expect(pm.response.text()).to.eql(""); });
+    language: text/javascript
+order: 6000
