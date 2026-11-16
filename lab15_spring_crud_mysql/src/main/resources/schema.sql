@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS product;
+
+CREATE TABLE product (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(100),
+    price DECIMAL(8,2)
+);
